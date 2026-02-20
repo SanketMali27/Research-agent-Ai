@@ -11,18 +11,18 @@ function ResearchForm({ onSubmit, loading }) {
   };
 
   return (
-    <form className="research-form" onSubmit={handleSubmit}>
-      <label htmlFor="topic">Research Topic</label>
+    <form className="research-form card" onSubmit={handleSubmit}>
+      <label htmlFor="topic">🔎 Research Topic</label>
       <input
         id="topic"
         type="text"
         value={topic}
-        placeholder="Example: Impact of AI agents on software R&D productivity"
+        placeholder="Example: World War 2 economic impact"
         onChange={(event) => setTopic(event.target.value)}
         disabled={loading}
       />
       <button type="submit" disabled={loading || !topic.trim()}>
-        {loading ? "Running..." : "Generate Report"}
+        {loading ? "Running Agents..." : "Generate Report"}
       </button>
     </form>
   );

@@ -28,15 +28,16 @@ function App() {
 
   return (
     <main className="app-container">
-      <h1>Multi-Agent Research Team</h1>
-      <p className="subtitle">
-        Researcher, Critic, Synthesizer, and Writer collaborate using compressed shared
-        memory.
-      </p>
+      <header className="hero">
+        <h1>🧠 Multi-Agent Research Team</h1>
+        <p>
+          Researcher, Critic, Synthesizer & Writer collaborate using compressed shared memory.
+        </p>
+      </header>
 
       <ResearchForm onSubmit={handleSubmit} loading={loading} />
 
-      {loading && <div className="spinner">Processing agents...</div>}
+      {loading && <div className="spinner">⚡ Agents collaborating...</div>}
       {error && <div className="error">{error}</div>}
 
       <ReportDisplay report={report} logs={logs} />

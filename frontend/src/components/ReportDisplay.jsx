@@ -1,26 +1,36 @@
+import ReactMarkdown from "react-markdown";
+import { jsPDF } from "jspdf";
 function ReportDisplay({ report, logs }) {
-  if (!report) {
-    return null;
-  }
+  if (!report) return null;
+
+  const downloadReport = () => {
+    const doc = new jsPDF();
+    doc.text(report, 10, 10);
+    doc.save("research-report.pdf");
+  };
 
   return (
     <section className="report-section">
-      <h2>Final Report</h2>
+      <div className="report-header">
+        <h2>📄 Final Report</h2>
+        <button className="download-btn" onClick={downloadReport}>
+          ⬇ Download Report
+        </button>
+      </div>
+
       <article className="report-content">
-        {report.split("\n").map((line, idx) => (
-          <p key={`${idx}-${line.slice(0, 20)}`}>{line || "\u00A0"}</p>
-        ))}
+        <ReactMarkdown>{report}</ReactMarkdown>
       </article>
 
-      <h2>Agent Logs</h2>
+      <h2>🤖 Agent Logs</h2>
       <div className="logs">
         {logs.map((log, index) => (
-          <div className="log-card" key={`${log.agent}-${index}`}>
-            <h3>
+          <details className="log-card" key={`${log.agent}-${index}`}>
+            <summary>
               {index + 1}. {log.agent}
-            </h3>
+            </summary>
             <pre>{log.compressed}</pre>
-          </div>
+          </details>
         ))}
       </div>
     </section>
