@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://research-agent-ai-r94d.onrender.com/api";
 
 export async function runResearch(topic) {
   const response = await fetch(`${API_BASE_URL}/research`, {
